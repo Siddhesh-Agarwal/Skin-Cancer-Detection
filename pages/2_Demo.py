@@ -3,20 +3,20 @@ import streamlit as st
 import tensorflow as tf
 
 st.set_page_config(
-    page_title="Skin Cancer Detection",
+    page_title="Diagnose.AI",
     page_icon="♋",
     layout="centered",
     initial_sidebar_state="expanded",
 )
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_model():
     model = tf.keras.models.load_model("./model/model.h5")
     return model
 
 
-st.title("Skin Cancer Detection")
+st.title("Diagnose.AI")
 
 pic = st.file_uploader(
     label="Upload a picture",
@@ -26,7 +26,9 @@ pic = st.file_uploader(
 )
 
 if st.button("Predict"):
-    if pic != None:
+    if not pic:
+        st.error("Please upload an image")
+    else:
         st.header("Results")
 
         cols = st.columns([1, 2])
@@ -65,12 +67,10 @@ if st.button("Predict"):
                 prediction = prediction[0]
 
                 disease = labels[prediction].title()
-                st.write(f"**Prediction:** `{disease}`")
-                st.write(f"**Confidence:** `{score:.2f}%`")
+                st.markdown(f"**Prediction:** `{disease}`")
+                st.markdown(f"**Confidence:** `{score:.2f}%`")
                 # st.info(f"The model predicts that the lesion is a **{prediction}** with a confidence of {score}%")
 
         st.warning(
             ":warning: This is not a medical diagnosis. Please consult a doctor for a professional diagnosis."
         )
-    else:
-        st.error("Please upload an image")

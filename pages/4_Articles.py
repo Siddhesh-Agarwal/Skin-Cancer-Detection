@@ -1,6 +1,6 @@
-from PIL import Image
 import requests
 import streamlit as st
+from PIL import Image
 from streamlit_lottie import st_lottie
 
 st.set_page_config(
@@ -11,14 +11,16 @@ st.set_page_config(
 )
 
 
-def load_lottieurl(url):
-    r = requests.get(url)
+def load_lottieurl(url: str):
+    r = requests.get(url, timeout=10)
     if r.status_code != 200:
         return None
     return r.json()
 
 
-lottie_disease = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json")
+lottie_disease = load_lottieurl(
+    "https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json"
+)
 
 img_actinic = Image.open("./images/Actinic_Keratosis.jpg")
 img_basal = Image.open("./images/basal-cell-carcinoma.jpg")
@@ -27,52 +29,48 @@ img_melanoma = Image.open("./images/Melanoma.jpg")
 img_nevus = Image.open("./images/Nevus.jpg")
 img_pigmented = Image.open("./images/pigmented.jpg")
 img_Seborrheic = Image.open("./images/Seborrheic.jpg")
-img_Squamous  = Image.open("./images/Squamous.jpg")
+img_Squamous = Image.open("./images/Squamous.jpg")
 img_Vascular = Image.open("./images/Vascular .jpg")
 
 # st.title("Main Page")
 st.title("Learn More")
 st_lottie(lottie_disease, height=300, key="disease")
-st.subheader("Read articles about some common skin diseases that are usually found in people.")
+st.subheader(
+    "Read articles about some common skin diseases that are usually found in people."
+)
 
 with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
         st.header("Actinic keratosis")
-        st.write("##")
-        st.write(
+        st.markdown("##")
+
+        st.markdown(
             """
-            Actinic keratoses (also called solar keratoses) are dry scaly patches of skin that have been damaged by the sun.
-            The patches are not usually serious. But there's a small chance they could become skin cancer, so it's important to avoid further damage to your skin.
-            Treatments for actinic keratoses include:
-            - prescription creams and gels
-            - freezing the patches (cryotherapy), this makes the patches turn into blisters and fall off after a few weeks
-            - surgery to cut out or scrape away the patches – you will be given a local anaesthetic first, so it does not hurt
-            - photodynamic therapy (PDT), where special cream is applied to the patches and a light is shone onto them to kill abnormal skin cells
-            """
+        Actinic keratoses (also called solar keratoses) are dry scaly patches of skin that have been damaged by the sun.
+        The patches are not usually serious. But there's a small chance they could become skin cancer, so it's important to avoid further damage to your skin.
+        Treatments for actinic keratoses include:
+        - prescription creams and gels
+        - freezing the patches (cryotherapy), this makes the patches turn into blisters and fall off after a few weeks
+        - surgery to cut out or scrape away the patches - you will be given a local anaesthetic first, so it does not hurt
+        - photodynamic therapy (PDT), where special cream is applied to the patches and a light is shone onto them to kill abnormal skin cells
+
+        [Learn More](https://www.nhs.uk/conditions/actinic-keratoses)
+        """
         )
-        st.write("[Learn More](https://www.nhs.uk/conditions/actinic-keratoses)")
-    with right_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_actinic)
+    with cols[1]:
+        st.image(img_actinic, caption="Actinic keratoses", use_column_width=True)
 
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_basal)
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
+        st.image(img_basal, caption="Basal cell carcinoma", use_column_width=True)
 
-    with right_column:
+    with cols[1]:
         st.header("Basal cell carcinoma")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             Basal cell carcinoma is a type of skin cancer. Basal cell carcinoma begins in the basal cells — a type of cell within the skin that produces new skin cells as old ones die off.
             Basal cell carcinoma often appears as a slightly transparent bump on the skin, though it can take other forms. Basal cell carcinoma occurs most often on areas of the skin that are exposed to the sun, such as your head and neck.
@@ -88,17 +86,17 @@ with st.container():
             - Wear protective clothing
             - Avoid tanning beds
             - Check your skin regularly and report changes to your doctor
-           """
-        )
-        st.write("[Learn More](https://www.mayoclinic.org/diseases-conditions/basal-cell-carcinoma/symptoms-causes/syc-20354187#:~:text=on%20brown%20skin-,Basal%20cell%20carcinoma%20is%20a%20type%20of%20skin%20cancer%20that,a%20type%20of%20skin%20cancer.)")
 
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
+            [Learn More](https://www.mayoclinic.org/diseases-conditions/basal-cell-carcinoma/symptoms-causes/syc-20354187#:~:text=on%20brown%20skin-,Basal%20cell%20carcinoma%20is%20a%20type%20of%20skin%20cancer%20that,a%20type%20of%20skin%20cancer.)
+            """
+        )
+
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
         st.header("Dermatofibroma")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             Dermatofibromas are harmless growths within the skin that usually have a small diameter. They can vary in color but are typically pink to light brown in light skin and dark brown or black in dark skin. They may appear more pink or darker if a person accidentally irritates them — for example, when shaving.
             As they are dense and firm to the touch, many people say that they feel like a small stone underneath or raised above the skin. Most dermatofibromas are painless, but some people experience itching, irritation, or tenderness at the site of the growth.
@@ -109,30 +107,21 @@ with st.container():
             - Color: The growths vary in color among individuals but will generally be pink, red, gray, brown, or black.
             - Location: Dermatofibromas are most common on the legs, but they sometimes appear on the arms, trunk, and, less commonly, elsewhere on the body.
             - Additional symptoms: Although they are usually harmless and painless, these growths may occasionally be itchy, tender, painful, or inflamed.
+
+            [Learn More](https://www.medicalnewstoday.com/articles/318870#treatment)
             """
         )
-        st.write(
-            "[Learn More](https://www.medicalnewstoday.com/articles/318870#treatment)")
-    with right_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_dermatofibroma)
+    with cols[1]:
+        st.image(img_dermatofibroma, caption="Dermatofibroma", use_column_width=True)
 
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_melanoma)
-    with right_column:
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
+        st.image(img_melanoma, caption="Melanoma", use_column_width=True)
+    with cols[1]:
         st.header("Melanoma")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             Melanoma, the most serious type of skin cancer, develops in the cells (melanocytes) that produce melanin — the pigment that gives your skin its color. Melanoma can also form in your eyes and, rarely, inside your body, such as in your nose or throat.
             The exact cause of all melanomas isn't clear, but exposure to ultraviolet (UV) radiation from sunlight or tanning lamps and beds increases your risk of developing melanoma. Limiting your exposure to UV radiation can help reduce your risk of melanoma.
@@ -147,19 +136,17 @@ with st.container():
             - Melanoma in the eye
 
             Make an appointment with your doctor if you notice any skin changes that seem unusual.
+
+            [Learn More](https://www.mayoclinic.org/diseases-conditions/melanoma/symptoms-causes/syc-20374884#:~:text=Melanoma%2C%20the%20most%20serious%20type,in%20your%20nose%20or%20throat.)
             """
         )
-        st.write(
-            "[Learn More](https://www.mayoclinic.org/diseases-conditions/melanoma/symptoms-causes/syc-20374884#:~:text=Melanoma%2C%20the%20most%20serious%20type,in%20your%20nose%20or%20throat.)")
 
-
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
         st.header("Nevus")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             Nevus (plural: nevi) is the medical term for a mole. Nevi are very common. Most peopleTrusted Source have between 10 and 40. Common nevi are harmless collections of colored cells. They typically appear as small brown, tan, or pink spots.
             You can be born with moles or develop them later. Moles that you're born with are known as congenital moles. However, most moles develop during childhood and adolescence. This is known as an acquired nevus. Moles can also develop later in life as a result of sun exposure.
@@ -170,31 +157,22 @@ with st.container():
             - Shave biopsy. Your doctor uses a razor to shave off a sample of the top layers of your skin
             - Punch biopsy. Your doctor uses a special punch tool to remove a sample of skin that contains both the top and deeper layers of skin.
             - Excisional biopsy. Your doctor uses a scalpel to remove your entire mole and some of the other skin around it.
+
+            [Learn More](https://www.healthline.com/health/nevus#diagnosis)
             """
         )
-        st.write(
-            "[Learn More](https://www.healthline.com/health/nevus#diagnosis)")
-    with right_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_nevus)
+    with cols[1]:
+        st.image(img_nevus, caption="Nevus", use_column_width=True)
 
 
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_Seborrheic)
-    with right_column:
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
+        st.image(img_Seborrheic, caption="Seborrheic keratosis", use_column_width=True)
+    with cols[1]:
         st.header("Seborrheic keratosis")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             A seborrheic keratosis (seb-o-REE-ik ker-uh-TOE-sis) is a common noncancerous (benign) skin growth. People tend to get more of them as they get older.
             Seborrheic keratoses are usually brown, black or light tan. The growths (lesions) look waxy or scaly and slightly raised. They appear gradually, usually on the face, neck, chest or back.
@@ -207,19 +185,18 @@ with st.container():
             - Very small growths clustered around the eyes or elsewhere on the face, sometimes called flesh moles or dermatosis papulosa nigra, common on Black or brown skin
             - Varied in color, ranging from light tan to brown or black
             - Itchiness
+
+            [Learn More](https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20374884)
             """
         )
-        st.write(
-            "[Learn More](https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20353878)")
 
 
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
         st.header("Squamous cell carcinoma")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             Squamous cell carcinoma of the skin is a common form of skin cancer that develops in the squamous cells that make up the middle and outer layers of the skin.
             Squamous cell carcinoma of the skin is usually not life-threatening, though it can be aggressive. Untreated, squamous cell carcinoma of the skin can grow large or spread to other parts of your body, causing serious complications.
@@ -232,36 +209,27 @@ with st.container():
             - A red, raised patch or wartlike sore on or in the anus or on your genitals
 
             Make an appointment with your doctor if you have a sore or scab that doesn't heal in about two months or a flat patch of scaly skin that won't go away.
+
+            [Learn More](https://www.mayoclinic.org/diseases-conditions/squamous-cell-carcinoma/symptoms-causes/syc-20352480)
             """
         )
-        st.write(
-            "[Learn More](https://www.mayoclinic.org/diseases-conditions/squamous-cell-carcinoma/symptoms-causes/syc-20352480)")
-    with right_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_Squamous)
+    with cols[1]:
+        st.image(img_Squamous, caption="Squamous cell carcinoma", use_column_width=True)
 
 
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
-        st.write("##")
-        st.write("##")
-        st.write("##")
-        st.image(img_Vascular)
-    with right_column:
+with st.container(border=True):
+    st.divider()
+    cols = st.columns(2)
+    with cols[0]:
+        st.image(img_Vascular, caption="Vascular lesion", use_column_width=True)
+    with cols[1]:
         st.header("Vascular lesion")
-        st.write("##")
-        st.write(
+        st.markdown(
             """
             Vascular lesions are relatively common abnormalities of the skin and underlying tissues, more commonly known as birthmarks. There are three major categories of vascular lesions: Hemangiomas, Vascular Malformations, and Pyogenic Granulomas. While these birthmarks can look similar at times, they each vary in terms of origin and necessary treatment.
             At SSM Health Cardinal Glennon Children’s hospital, the SLUCare Physician Group pediatric plastic surgery team is committed to creating an individualized care plan for vascular lesions that improves the physical and emotional well-being of your child.
             Vascular tumors may be benign (not cancer) or malignant (cancer) and can occur anywhere in the body. They may form on the skin, in the tissues below the skin, and/or in an organ. There are many types of vascular tumors.
+
+            [Learn More](https://www.ssmhealth.com/cardinal-glennon/pediatric-plastic-reconstructive-surgery/hemangiomas)
             """
         )
-        st.write(
-            "[Learn More](https://www.ssmhealth.com/cardinal-glennon/pediatric-plastic-reconstructive-surgery/hemangiomas)")
-
