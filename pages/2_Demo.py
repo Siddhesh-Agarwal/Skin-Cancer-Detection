@@ -48,9 +48,10 @@ if st.button("Predict"):
                 "vascular lesion",
             ]
 
-            model = load_model()
+            with st.spinner("Loading model..."):
+                model = load_model()
 
-            with st.spinner("Predicting..."):
+            with st.spinner("Processing image..."):
                 img = PIL.Image.open(pic)
                 img = img.resize((180, 180))
                 img = tf.keras.preprocessing.image.img_to_array(img)
@@ -62,15 +63,17 @@ if st.button("Predict"):
                 score = tf.reduce_max(prediction)
                 score = tf.round(score * 100, 2)
 
+            with st.spinner("Predicting..."):
                 prediction = tf.argmax(prediction, axis=1)
                 prediction = prediction.numpy()
                 prediction = prediction[0]
 
-                disease = labels[prediction].title()
-                st.markdown(f"**Prediction:** `{disease}`")
-                st.markdown(f"**Confidence:** `{score:.2f}%`")
+                disease = str(labels[prediction]).title()
+                st.metric("Prediction", disease, delta_color="off")
+                st.metric("Confidence", f"{score:.2f}%", delta_color="off")
                 # st.info(f"The model predicts that the lesion is a **{prediction}** with a confidence of {score}%")
 
         st.warning(
-            ":warning: This is not a medical diagnosis. Please consult a doctor for a professional diagnosis."
+            "This is not a medical diagnosis. Please consult a doctor for a professional diagnosis.",
+            icon="⚠️",
         )
