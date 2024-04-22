@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "skin-cancer-detection"
+version = "0.1.0"
+description = "A streamlit app for skin cancer detection"
+authors = ["Siddhesh Agarwal <siddhesh.agarwal@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+homepage = "https://github.com/Siddhesh-Agarwal/skin-cancer-detection"
+
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+streamlit = "^1.33.0"
+tensorflow-io-gcs-filesystem = "0.27.0"
+tensorflow = "2.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
