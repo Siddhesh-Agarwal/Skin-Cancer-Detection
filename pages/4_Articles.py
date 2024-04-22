@@ -1,6 +1,5 @@
 import requests
 import streamlit as st
-from PIL import Image
 from streamlit_lottie import st_lottie
 
 st.set_page_config(
@@ -12,6 +11,8 @@ st.set_page_config(
 
 
 def load_lottieurl(url: str):
+    """Load an Lottie animation from a URL."""
+
     r = requests.get(url, timeout=10)
     if r.status_code != 200:
         return None
@@ -22,16 +23,6 @@ lottie_disease = load_lottieurl(
     "https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json"
 )
 
-img_actinic = Image.open("./images/Actinic_Keratosis.jpg")
-img_basal = Image.open("./images/basal-cell-carcinoma.jpg")
-img_dermatofibroma = Image.open("./images/Dermatofibroma.jpg")
-img_melanoma = Image.open("./images/Melanoma.jpg")
-img_nevus = Image.open("./images/Nevus.jpg")
-img_pigmented = Image.open("./images/pigmented.jpg")
-img_Seborrheic = Image.open("./images/Seborrheic.jpg")
-img_Squamous = Image.open("./images/Squamous.jpg")
-img_Vascular = Image.open("./images/Vascular .jpg")
-
 # st.title("Main Page")
 st.title("Learn More")
 st_lottie(lottie_disease, height=300, key="disease")
@@ -39,8 +30,7 @@ st.subheader(
     "Read articles about some common skin diseases that are usually found in people."
 )
 
-with st.container():
-    st.divider()
+with st.container(border=True):
     cols = st.columns(2)
     with cols[0]:
         st.header("Actinic keratosis")
@@ -60,13 +50,20 @@ with st.container():
         """
         )
     with cols[1]:
-        st.image(img_actinic, caption="Actinic keratoses", use_column_width=True)
+        st.image(
+            "./images/Actinic_Keratosis.jpg",
+            caption="Actinic keratoses",
+            use_column_width=True,
+        )
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
-        st.image(img_basal, caption="Basal cell carcinoma", use_column_width=True)
+        st.image(
+            "./images/basal-cell-carcinoma.jpg",
+            caption="Basal cell carcinoma",
+            use_column_width=True,
+        )
 
     with cols[1]:
         st.header("Basal cell carcinoma")
@@ -80,6 +77,7 @@ with st.container(border=True):
             - A brown, black or blue lesion — or a lesion with dark spots — with a slightly raised, translucent border.
             - A flat, scaly patch with a raised edge. Over time, these patches can grow quite large.
             - A white, waxy, scar-like lesion without a clearly defined border.
+
             To reduce your risk of basal cell carcinoma you can:
             - Avoid the sun during the middle of the day
             - Wear sunscreen year-round
@@ -92,7 +90,6 @@ with st.container(border=True):
         )
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
         st.header("Dermatofibroma")
@@ -112,13 +109,20 @@ with st.container(border=True):
             """
         )
     with cols[1]:
-        st.image(img_dermatofibroma, caption="Dermatofibroma", use_column_width=True)
+        st.image(
+            "./images/Dermatofibroma.jpg",
+            caption="Dermatofibroma",
+            use_column_width=True,
+        )
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
-        st.image(img_melanoma, caption="Melanoma", use_column_width=True)
+        st.image(
+            "./images/Melanoma.jpg",
+            caption="Melanoma",
+            use_column_width=True,
+        )
     with cols[1]:
         st.header("Melanoma")
         st.markdown(
@@ -129,6 +133,7 @@ with st.container(border=True):
             The first melanoma signs and symptoms often are:
             - A change in an existing mole
             - The development of a new pigmented or unusual-looking growth on your skin
+
             Melanoma doesn't always begin as a mole. It can also occur on otherwise normal-appearing skin.
             Hidden melanomas include:
             - Melanoma under a nail
@@ -142,7 +147,6 @@ with st.container(border=True):
         )
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
         st.header("Nevus")
@@ -162,14 +166,21 @@ with st.container(border=True):
             """
         )
     with cols[1]:
-        st.image(img_nevus, caption="Nevus", use_column_width=True)
+        st.image(
+            "./images/Nevus.jpg",
+            caption="Nevus",
+            use_column_width=True,
+        )
 
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
-        st.image(img_Seborrheic, caption="Seborrheic keratosis", use_column_width=True)
+        st.image(
+            "./images/Seborrheic.jpg",
+            caption="Seborrheic keratosis",
+            use_column_width=True,
+        )
     with cols[1]:
         st.header("Seborrheic keratosis")
         st.markdown(
@@ -192,7 +203,6 @@ with st.container(border=True):
 
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
         st.header("Squamous cell carcinoma")
@@ -214,14 +224,21 @@ with st.container(border=True):
             """
         )
     with cols[1]:
-        st.image(img_Squamous, caption="Squamous cell carcinoma", use_column_width=True)
+        st.image(
+            "./images/Squamous.jpg",
+            caption="Squamous cell carcinoma",
+            use_column_width=True,
+        )
 
 
 with st.container(border=True):
-    st.divider()
     cols = st.columns(2)
     with cols[0]:
-        st.image(img_Vascular, caption="Vascular lesion", use_column_width=True)
+        st.image(
+            "./images/Vascular.jpg",
+            caption="Vascular lesion",
+            use_column_width=True,
+        )
     with cols[1]:
         st.header("Vascular lesion")
         st.markdown(
