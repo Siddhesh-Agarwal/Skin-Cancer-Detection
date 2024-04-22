@@ -14,6 +14,8 @@ python = ">=3.10,<3.11"
 streamlit = "^1.33.0"
 tensorflow-io-gcs-filesystem = "0.27.0"
 tensorflow = "2.12"
+streamlit-lottie = "^0.0.5"
+geopy = "^2.4.1"
 
 
 [build-system]
