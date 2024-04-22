@@ -1,4 +1,6 @@
-# PoweringSTEMHacks
+# Skin Cancer Detection
+
+[Live Site](https://skin-cancer-check.streamlit.app/)
 
 ## Running
 
