@@ -53,7 +53,7 @@ with st.container(border=True):
         st.image(
             "./images/Actinic_Keratosis.jpg",
             caption="Actinic keratoses",
-            use_column_width=True,
+            use_container_width=True,
         )
 
 with st.container(border=True):
@@ -62,7 +62,7 @@ with st.container(border=True):
         st.image(
             "./images/basal-cell-carcinoma.jpg",
             caption="Basal cell carcinoma",
-            use_column_width=True,
+            use_container_width=True,
         )
 
     with cols[1]:
@@ -100,7 +100,7 @@ with st.container(border=True):
             Some doctors or medical researchers may referTrusted Source to dermatofibromas as benign fibrous histiocytomas.
             Key markers of a dermatofibroma are:
             - Appearance: A dermatofibroma presents as a round bump that is mostly under the skin.
-            - Size: The normal range is about 0.5–1.5 centimeters (cm), with most lesions being 0.7–1.0 cm in diameter. The size will usually remain stable.
+            - Size: The normal range is about 0.5-1.5 centimeters (cm), with most lesions being 0.7-1.0 cm in diameter. The size will usually remain stable.
             - Color: The growths vary in color among individuals but will generally be pink, red, gray, brown, or black.
             - Location: Dermatofibromas are most common on the legs, but they sometimes appear on the arms, trunk, and, less commonly, elsewhere on the body.
             - Additional symptoms: Although they are usually harmless and painless, these growths may occasionally be itchy, tender, painful, or inflamed.
@@ -112,7 +112,7 @@ with st.container(border=True):
         st.image(
             "./images/Dermatofibroma.jpg",
             caption="Dermatofibroma",
-            use_column_width=True,
+            use_container_width=True,
         )
 
 with st.container(border=True):
@@ -121,7 +121,7 @@ with st.container(border=True):
         st.image(
             "./images/Melanoma.jpg",
             caption="Melanoma",
-            use_column_width=True,
+            use_container_width=True,
         )
     with cols[1]:
         st.header("Melanoma")
@@ -169,7 +169,7 @@ with st.container(border=True):
         st.image(
             "./images/Nevus.jpg",
             caption="Nevus",
-            use_column_width=True,
+            use_container_width=True,
         )
 
 
@@ -179,7 +179,7 @@ with st.container(border=True):
         st.image(
             "./images/Seborrheic.jpg",
             caption="Seborrheic keratosis",
-            use_column_width=True,
+            use_container_width=True,
         )
     with cols[1]:
         st.header("Seborrheic keratosis")
@@ -227,7 +227,7 @@ with st.container(border=True):
         st.image(
             "./images/Squamous.jpg",
             caption="Squamous cell carcinoma",
-            use_column_width=True,
+            use_container_width=True,
         )
 
 
@@ -237,7 +237,7 @@ with st.container(border=True):
         st.image(
             "./images/Vascular.jpg",
             caption="Vascular lesion",
-            use_column_width=True,
+            use_container_width=True,
         )
     with cols[1]:
         st.header("Vascular lesion")

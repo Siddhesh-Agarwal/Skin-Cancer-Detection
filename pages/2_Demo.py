@@ -33,7 +33,7 @@ if st.button("Predict"):
 
         cols = st.columns([1, 2])
         with cols[0]:
-            st.image(pic, caption=pic.name, use_column_width=True)
+            st.image(pic, caption=pic.name, use_container_width=True)
 
         with cols[1]:
             labels = [
