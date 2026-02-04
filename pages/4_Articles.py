@@ -19,23 +19,25 @@ def load_lottieurl(url: str):
     return r.json()
 
 
-lottie_disease = load_lottieurl(
-    "https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json"
-)
 
 # st.title("Main Page")
 st.title("Learn More")
-st_lottie(lottie_disease, height=300, key="disease")
 st.subheader(
     "Read articles about some common skin diseases that are usually found in people."
 )
 
-with st.container(border=True):
+try:
+    lottie_disease = load_lottieurl(
+        "https://assets9.lottiefiles.com/packages/lf20_gkgqj2yq.json"
+    )
+    st_lottie(lottie_disease, height=300, key="disease")
+except:
+    pass
+
+
+with st.expander("Actinic keratosis"):
     cols = st.columns(2)
     with cols[0]:
-        st.header("Actinic keratosis")
-        st.markdown("##")
-
         st.markdown(
             """
         Actinic keratoses (also called solar keratoses) are dry scaly patches of skin that have been damaged by the sun.
@@ -53,20 +55,12 @@ with st.container(border=True):
         st.image(
             "./images/Actinic_Keratosis.jpg",
             caption="Actinic keratoses",
-            use_container_width=True,
+            width="stretch"
         )
 
-with st.container(border=True):
+with st.expander("Basal cell carcinoma"):
     cols = st.columns(2)
     with cols[0]:
-        st.image(
-            "./images/basal-cell-carcinoma.jpg",
-            caption="Basal cell carcinoma",
-            use_container_width=True,
-        )
-
-    with cols[1]:
-        st.header("Basal cell carcinoma")
         st.markdown(
             """
             Basal cell carcinoma is a type of skin cancer. Basal cell carcinoma begins in the basal cells — a type of cell within the skin that produces new skin cells as old ones die off.
@@ -88,11 +82,16 @@ with st.container(border=True):
             [Learn More](https://www.mayoclinic.org/diseases-conditions/basal-cell-carcinoma/symptoms-causes/syc-20354187#:~:text=on%20brown%20skin-,Basal%20cell%20carcinoma%20is%20a%20type%20of%20skin%20cancer%20that,a%20type%20of%20skin%20cancer.)
             """
         )
+    with cols[1]:
+        st.image(
+            "./images/basal-cell-carcinoma.jpg",
+            caption="Basal cell carcinoma",
+            width="stretch"
+        )
 
-with st.container(border=True):
+with st.expander("Dermatofibroma"):
     cols = st.columns(2)
     with cols[0]:
-        st.header("Dermatofibroma")
         st.markdown(
             """
             Dermatofibromas are harmless growths within the skin that usually have a small diameter. They can vary in color but are typically pink to light brown in light skin and dark brown or black in dark skin. They may appear more pink or darker if a person accidentally irritates them — for example, when shaving.
@@ -112,19 +111,12 @@ with st.container(border=True):
         st.image(
             "./images/Dermatofibroma.jpg",
             caption="Dermatofibroma",
-            use_container_width=True,
+            width="stretch"
         )
 
-with st.container(border=True):
+with st.expander("Melanoma"):
     cols = st.columns(2)
     with cols[0]:
-        st.image(
-            "./images/Melanoma.jpg",
-            caption="Melanoma",
-            use_container_width=True,
-        )
-    with cols[1]:
-        st.header("Melanoma")
         st.markdown(
             """
             Melanoma, the most serious type of skin cancer, develops in the cells (melanocytes) that produce melanin — the pigment that gives your skin its color. Melanoma can also form in your eyes and, rarely, inside your body, such as in your nose or throat.
@@ -145,11 +137,16 @@ with st.container(border=True):
             [Learn More](https://www.mayoclinic.org/diseases-conditions/melanoma/symptoms-causes/syc-20374884#:~:text=Melanoma%2C%20the%20most%20serious%20type,in%20your%20nose%20or%20throat.)
             """
         )
+    with cols[1]:
+        st.image(
+            "./images/Melanoma.jpg",
+            caption="Melanoma",
+            width="stretch"
+        )
 
-with st.container(border=True):
+with st.expander("Nevus"):
     cols = st.columns(2)
     with cols[0]:
-        st.header("Nevus")
         st.markdown(
             """
             Nevus (plural: nevi) is the medical term for a mole. Nevi are very common. Most peopleTrusted Source have between 10 and 40. Common nevi are harmless collections of colored cells. They typically appear as small brown, tan, or pink spots.
@@ -169,20 +166,13 @@ with st.container(border=True):
         st.image(
             "./images/Nevus.jpg",
             caption="Nevus",
-            use_container_width=True,
+            width="stretch"
         )
 
 
-with st.container(border=True):
+with st.expander("Seborrheic keratosis"):
     cols = st.columns(2)
     with cols[0]:
-        st.image(
-            "./images/Seborrheic.jpg",
-            caption="Seborrheic keratosis",
-            use_container_width=True,
-        )
-    with cols[1]:
-        st.header("Seborrheic keratosis")
         st.markdown(
             """
             A seborrheic keratosis (seb-o-REE-ik ker-uh-TOE-sis) is a common noncancerous (benign) skin growth. People tend to get more of them as they get older.
@@ -200,12 +190,16 @@ with st.container(border=True):
             [Learn More](https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20374884)
             """
         )
+    with cols[1]:
+        st.image(
+            "./images/Seborrheic.jpg",
+            caption="Seborrheic keratosis",
+            width="stretch"
+        )
 
-
-with st.container(border=True):
+with st.expander("Squamous cell carcinoma"):
     cols = st.columns(2)
     with cols[0]:
-        st.header("Squamous cell carcinoma")
         st.markdown(
             """
             Squamous cell carcinoma of the skin is a common form of skin cancer that develops in the squamous cells that make up the middle and outer layers of the skin.
@@ -227,20 +221,13 @@ with st.container(border=True):
         st.image(
             "./images/Squamous.jpg",
             caption="Squamous cell carcinoma",
-            use_container_width=True,
+            width="stretch"
         )
 
 
-with st.container(border=True):
+with st.expander("Vascular lesion"):
     cols = st.columns(2)
     with cols[0]:
-        st.image(
-            "./images/Vascular.jpg",
-            caption="Vascular lesion",
-            use_container_width=True,
-        )
-    with cols[1]:
-        st.header("Vascular lesion")
         st.markdown(
             """
             Vascular lesions are relatively common abnormalities of the skin and underlying tissues, more commonly known as birthmarks. There are three major categories of vascular lesions: Hemangiomas, Vascular Malformations, and Pyogenic Granulomas. While these birthmarks can look similar at times, they each vary in terms of origin and necessary treatment.
@@ -249,4 +236,10 @@ with st.container(border=True):
 
             [Learn More](https://www.ssmhealth.com/cardinal-glennon/pediatric-plastic-reconstructive-surgery/hemangiomas)
             """
+        )
+    with cols[1]:
+        st.image(
+            "./images/Vascular.jpg",
+            caption="Vascular lesion",
+            width="stretch"
         )

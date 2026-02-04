@@ -1,4 +1,4 @@
-import PIL
+from PIL import Image
 import streamlit as st
 import tensorflow as tf
 
@@ -52,7 +52,7 @@ if st.button("Predict"):
                 model = load_model()
 
             with st.spinner("Processing image..."):
-                img = PIL.Image.open(pic)
+                img = Image.open(pic)
                 img = img.resize((180, 180))
                 img = tf.keras.preprocessing.image.img_to_array(img)
                 img = tf.expand_dims(img, axis=0)

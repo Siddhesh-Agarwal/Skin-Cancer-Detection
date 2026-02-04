@@ -1,6 +1,7 @@
 import requests
 import streamlit as st
 from geopy.geocoders import Nominatim
+from typing import TypedDict
 
 st.set_page_config(
     page_title="Skin Cancer",
@@ -24,6 +25,10 @@ city = (
     .strip()
     .title()
 )
+
+class Dermatologist(TypedDict):
+    name: str
+    address: str
 
 if st.button("Find a dermatologist"):
     if not city:
@@ -50,7 +55,7 @@ if st.button("Find a dermatologist"):
         place_ids = [result["place_id"] for result in results]
 
         # Use the place IDs to get the details of the places
-        dermatologists: list[dict[str, str]] = []
+        dermatologists: list[Dermatologist] = []
         for place_id in place_ids:
             url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&key={api_key}"
             response = requests.get(url, timeout=10)
@@ -65,11 +70,5 @@ if st.button("Find a dermatologist"):
         # Display the results in Streamlit
         st.header("Results")
         for i, dermatologist in enumerate(dermatologists, start=1):
-            # st.markdown(f"**{dermatologist['name']}**")
-            # st.markdown(dermatologist["address"])
-            st.markdown(
-                f"""
-                {i}. **{dermatologist['name']}**
-                > **Address:** {dermatologist['address']}
-                """
-            )
+            with st.expander(dermatologist['name']):
+                st.markdown(f"**Address:** {dermatologist['address']}")
