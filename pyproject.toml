@@ -1,0 +1,12 @@
+[project]
+name = "skin-cancer-detection"
+version = "0.1.0"
+description = "A skin cancer detection web application"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "geopy>=2.4.1",
+    "streamlit>=1.53.1",
+    "streamlit-lottie>=0.0.5",
+    "tensorflow>=2.20.0",
+]
