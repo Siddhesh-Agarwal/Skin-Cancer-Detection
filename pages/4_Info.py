@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 
 st.set_page_config(
-    page_title="Skin Cancer",
+    page_title="Skin Cancer Detection | Info",
     page_icon="♋",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -12,16 +12,13 @@ st.set_page_config(
 
 def load_lottieurl(url: str):
     """Load an Lottie animation from a URL."""
-
     r = requests.get(url, timeout=10)
     if r.status_code != 200:
         return None
     return r.json()
 
 
-
-# st.title("Main Page")
-st.title("Learn More")
+st.header("Learn More")
 st.subheader(
     "Read articles about some common skin diseases that are usually found in people."
 )
@@ -55,7 +52,7 @@ with st.expander("Actinic keratosis"):
         st.image(
             "./images/Actinic_Keratosis.jpg",
             caption="Actinic keratoses",
-            width="stretch"
+            width="stretch",
         )
 
 with st.expander("Basal cell carcinoma"):
@@ -86,7 +83,7 @@ with st.expander("Basal cell carcinoma"):
         st.image(
             "./images/basal-cell-carcinoma.jpg",
             caption="Basal cell carcinoma",
-            width="stretch"
+            width="stretch",
         )
 
 with st.expander("Dermatofibroma"):
@@ -109,9 +106,7 @@ with st.expander("Dermatofibroma"):
         )
     with cols[1]:
         st.image(
-            "./images/Dermatofibroma.jpg",
-            caption="Dermatofibroma",
-            width="stretch"
+            "./images/Dermatofibroma.jpg", caption="Dermatofibroma", width="stretch"
         )
 
 with st.expander("Melanoma"):
@@ -138,11 +133,7 @@ with st.expander("Melanoma"):
             """
         )
     with cols[1]:
-        st.image(
-            "./images/Melanoma.jpg",
-            caption="Melanoma",
-            width="stretch"
-        )
+        st.image("./images/Melanoma.jpg", caption="Melanoma", width="stretch")
 
 with st.expander("Nevus"):
     cols = st.columns(2)
@@ -163,11 +154,7 @@ with st.expander("Nevus"):
             """
         )
     with cols[1]:
-        st.image(
-            "./images/Nevus.jpg",
-            caption="Nevus",
-            width="stretch"
-        )
+        st.image("./images/Nevus.jpg", caption="Nevus", width="stretch")
 
 
 with st.expander("Seborrheic keratosis"):
@@ -192,9 +179,7 @@ with st.expander("Seborrheic keratosis"):
         )
     with cols[1]:
         st.image(
-            "./images/Seborrheic.jpg",
-            caption="Seborrheic keratosis",
-            width="stretch"
+            "./images/Seborrheic.jpg", caption="Seborrheic keratosis", width="stretch"
         )
 
 with st.expander("Squamous cell carcinoma"):
@@ -219,9 +204,7 @@ with st.expander("Squamous cell carcinoma"):
         )
     with cols[1]:
         st.image(
-            "./images/Squamous.jpg",
-            caption="Squamous cell carcinoma",
-            width="stretch"
+            "./images/Squamous.jpg", caption="Squamous cell carcinoma", width="stretch"
         )
 
 
@@ -238,8 +221,4 @@ with st.expander("Vascular lesion"):
             """
         )
     with cols[1]:
-        st.image(
-            "./images/Vascular.jpg",
-            caption="Vascular lesion",
-            width="stretch"
-        )
+        st.image("./images/Vascular.jpg", caption="Vascular lesion", width="stretch")

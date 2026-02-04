@@ -3,7 +3,7 @@ import streamlit as st
 import tensorflow as tf
 
 st.set_page_config(
-    page_title="Diagnose.AI",
+    page_title="Skin Cancer Detection | Analyze",
     page_icon="♋",
     layout="centered",
     initial_sidebar_state="expanded",
@@ -16,7 +16,8 @@ def load_model():
     return model
 
 
-st.title("Diagnose.AI")
+st.header("Analyze")
+st.subheader("Upload an image to get a diagnosis")
 
 pic = st.file_uploader(
     label="Upload a picture",

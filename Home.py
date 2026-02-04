@@ -11,9 +11,9 @@ def load_lottieurl(url):
 
 
 st.set_page_config(
-    page_title="Skin Cancer",
+    page_title="Skin Cancer Detection",
     page_icon="♋",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="expanded",
 )
 
