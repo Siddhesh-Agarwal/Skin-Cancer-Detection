@@ -17,5 +17,5 @@
 1. Run the app
 
     ```bash
-    uv run streamlit run ./About.py
+    uv run streamlit run ./Home.py
     ```
