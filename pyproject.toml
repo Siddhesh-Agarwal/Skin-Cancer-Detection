@@ -10,3 +10,9 @@ dependencies = [
     "streamlit-lottie>=0.0.5",
     "tensorflow>=2.20.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+    "matplotlib>=3.10.8",
+]
