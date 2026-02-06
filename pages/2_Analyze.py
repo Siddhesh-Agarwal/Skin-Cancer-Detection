@@ -12,7 +12,7 @@ st.set_page_config(
 
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("./model/model.h5")
+    model = tf.keras.models.load_model("./model/model.keras")
     return model
 
 
